@@ -5,21 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="./assets/css/reset.css"/>
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css"/>
-    <script src="./assets/javascript/game.js"></script>
+    
 </head>
 <body>
    <h1>The Psychic Game</h1>
    <br>
    <div id=gameContent>
-        <h2>Guess What Letter I'm Thinking of!</h2>
+        <h2>Guess What Letter I'm Thinking of?!</h2>
         <br>
-        <h2 id=wins></h2>
+        <div>Wins: <span id=wins></span> </div>
         <br>
-        <h2 id=losses></h2>
+        <div>Losses <span id=losses></span></div>
         <br>
-        <h2 id=guesses></h2>
+        <div> Guesses Left: <span id=guesses></span></div>
         <br>
-        <h2 id=playerGuess></h2>
+        <div>Your Guess So Far: <span id=playerGuesses></span></div>
+        <br> <!--delete before submit-->
+        <div>Computer Guess: <span id=cp></span></div><!--delete before submit-->
     </div>
+    <!-- is it right to put the script all the way down here? -->
+    <script src="./assets/javascript/game.js"></script>
 </body>
 </html>

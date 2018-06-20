@@ -20,9 +20,9 @@ document.querySelector("#cp").innerHTML=computerGuess; //delete before you submi
         var userGuess = event.key;   // Determines which key was pressed.
         guessedLetters.push(userGuess);    // store user guesses into guessedLetters array
         document.querySelector("#playerGuesses").innerHTML= guessedLetters;  
-            if (userGuess === computerGuessedLetters[0]) {
+            if (userGuess === computerGuessedLetters[0] && guessesLeft>0) {
                 //user wins game
-                wins++
+                wins++;
                 document.querySelector("#wins").innerHTML=wins;
                 //game resets
                 guessesLeft= 9;
@@ -32,23 +32,29 @@ document.querySelector("#cp").innerHTML=computerGuess; //delete before you submi
                 document.querySelector("#guesses").innerHTML=guessesLeft;
                 document.querySelector("#playerGuesses").innerHTML= guessedLetters;
                 //computer selects a new letter
-                var computerGuess = letters[Math.floor(Math.random()* letters.length)];
+                computerGuess = letters[Math.floor(Math.random()* letters.length)];
                 computerGuessedLetters.push(computerGuess);
                 document.querySelector("#cp").innerHTML=computerGuess; //delete before you submit!
             }
-        // else if (computerGuess===guessedLetters) { 
-        //     guessesLeft= 9;
-        //     guessedLetters = [];
-        //     // print everything to the page
-        //     document.querySelector("#wins").innerHTML=wins;
-        //     document.querySelector("#losses").innerHTML=losses;
-        //     document.querySelector("#guesses").innerHTML=guessesLeft;
-        //     document.querySelector("#playerGuesses").innerHTML= guessedLetters;
-        //     var computerGuess = letters[Math.floor(Math.random()* letters.length)];
-        //     document.querySelector("#cp").innerHTML=computerGuess; //delete before you submit!
-        // }
+        else if(userGuess !== computerGuessedLetters[0] && guessesLeft>0) {
+            guessesLeft--;
+            document.querySelector("#guesses").innerHTML=guessesLeft;
+        }
+        else {
+            losses++;
+            document.querySelector("#losses").innerHTML=losses;
+             //game resets
+             guessesLeft= 9;
+             guessedLetters = [];
+             computerGuessedLetters = [];
+             // print everything to the page
+             document.querySelector("#guesses").innerHTML=guessesLeft;
+             document.querySelector("#playerGuesses").innerHTML= guessedLetters;
+             //computer selects a new letter
+             computerGuess = letters[Math.floor(Math.random()* letters.length)];
+             computerGuessedLetters.push(computerGuess);
+             document.querySelector("#cp").innerHTML=computerGuess; //delete before you submit!
+        }
    }
-// might need to put the stuff inside of the document.onkeyup in a while loop
- //once guess logic with the for loop is fixed, you need to write the conditional logic for how a user wins or loses 
 
 

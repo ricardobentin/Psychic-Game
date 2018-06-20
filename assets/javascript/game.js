@@ -10,51 +10,59 @@ var computerGuessedLetters = [];
 document.querySelector("#wins").innerHTML=wins;
 document.querySelector("#losses").innerHTML=losses;
 document.querySelector("#guesses").innerHTML=guessesLeft;
-var computerGuess = letters[Math.floor(Math.random()* letters.length)];// Create a function to generate a random number between 0 and 26 to correspond to each letter of the alphabet
-    computerGuessedLetters.push(computerGuess);
-document.querySelector("#cp").innerHTML=computerGuess; //delete before you submit!
-
-// need to write logic to store the user's guess into an array and then use create a for loop that will loop 9 times and write the output into the #playerGuesses div 
-//until the user runs out of guesses an then it will clear the div, and the game will start over
+// Create a function to generate a random number between 0 and 26 to correspond to each letter of the alphabet
+var computerGuess = letters[Math.floor(Math.random()* letters.length)];
+//store the computerGuess in an array called computerGuessedLetters
+computerGuessedLetters.push(computerGuess);
+    //Create a function that will listen to keystrokes
     document.onkeyup = function(event) {
-        var userGuess = event.key;   // Determines which key was pressed.
-        guessedLetters.push(userGuess);    // store user guesses into guessedLetters array
+        // Determine which key is pressed and store it in a variable called userGuess
+        var userGuess = event.key; 
+        // Store userGuess in an array called guessedLetters
+        guessedLetters.push(userGuess);
+        //print guessed letters to the div id playerGuesses in HTML
         document.querySelector("#playerGuesses").innerHTML= guessedLetters;  
+            //Logic for wins. User wins only if they correctly guess the computer's guess AND they have at least 1 guess left
             if (userGuess === computerGuessedLetters[0] && guessesLeft>0) {
-                //user wins game
+                //Increment wins by 1 when a user wins
                 wins++;
+                //print new value of wins in the div id wins
                 document.querySelector("#wins").innerHTML=wins;
-                //game resets
+                //game resets at this point so give the user back 9 guesses, clearing any guesses the user has made and clearing the computer guess.
                 guessesLeft= 9;
                 guessedLetters = [];
                 computerGuessedLetters = [];
-                // print everything to the page
+                // update the guesses left and the users' new guessed letters to the page
                 document.querySelector("#guesses").innerHTML=guessesLeft;
                 document.querySelector("#playerGuesses").innerHTML= guessedLetters;
-                //computer selects a new letter
+                //computer selects a new letter and it stores it to computerGuessedLetters array
                 computerGuess = letters[Math.floor(Math.random()* letters.length)];
                 computerGuessedLetters.push(computerGuess);
-                document.querySelector("#cp").innerHTML=computerGuess; //delete before you submit!
             }
-        else if(userGuess !== computerGuessedLetters[0] && guessesLeft>0) {
-            guessesLeft--;
-            document.querySelector("#guesses").innerHTML=guessesLeft;
-        }
-        else {
-            losses++;
-            document.querySelector("#losses").innerHTML=losses;
-             //game resets
-             guessesLeft= 9;
-             guessedLetters = [];
-             computerGuessedLetters = [];
-             // print everything to the page
-             document.querySelector("#guesses").innerHTML=guessesLeft;
-             document.querySelector("#playerGuesses").innerHTML= guessedLetters;
-             //computer selects a new letter
-             computerGuess = letters[Math.floor(Math.random()* letters.length)];
-             computerGuessedLetters.push(computerGuess);
-             document.querySelector("#cp").innerHTML=computerGuess; //delete before you submit!
-        }
-   }
+            //logic for if a user guesses incorrectly but still has at least 1 guess left
+            else if(userGuess !== computerGuessedLetters[0] && guessesLeft>0) {
+                //decrement guesses left
+                guessesLeft--;
+                //show the new value for guesses left in the div id guesses
+                document.querySelector("#guesses").innerHTML=guessesLeft;
+            }
+            //logic for when a user does not correctly guess the computer's guess and they do not have any guesses left
+            else {
+                //increment losses by 1 when a user loses
+                losses++;
+                //show new value for losses in the div id losses
+                document.querySelector("#losses").innerHTML=losses;
+                //game resets at this point so give the user back 9 guesses, clearing any guesses the user has made and clearing the computer guess.
+                guessesLeft= 9;
+                guessedLetters = [];
+                computerGuessedLetters = [];
+                // update the guesses left and the users' new guessed letters to the page
+                document.querySelector("#guesses").innerHTML=guessesLeft;
+                document.querySelector("#playerGuesses").innerHTML= guessedLetters;
+                //computer selects a new letter and it stores it to computerGuessedLetters array
+                computerGuess = letters[Math.floor(Math.random()* letters.length)];
+                computerGuessedLetters.push(computerGuess);
+            }
+     }
 
 

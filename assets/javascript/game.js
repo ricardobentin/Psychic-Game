@@ -23,7 +23,7 @@ computerGuessedLetters.push(computerGuess);
         //print guessed letters to the div id playerGuesses in HTML
         document.querySelector("#playerGuesses").innerHTML= guessedLetters;  
             //Logic for wins. User wins only if they correctly guess the computer's letter AND they have at least 1 guess left
-            if (userGuess === computerGuessedLetters[0] && guessesLeft>=0) {
+            if (userGuess === computerGuessedLetters[0] && guessesLeft>0) {
                 //Increment wins by 1 when a user wins
                 wins++;
                 //print new value of wins in the div id wins
@@ -40,7 +40,7 @@ computerGuessedLetters.push(computerGuess);
                 computerGuessedLetters.push(computerGuess);
             }
             //logic for if a user guesses incorrectly but still has at least 1 guess left
-            else if(userGuess !== computerGuessedLetters[0] && guessesLeft>0) {
+            else if(userGuess !== computerGuessedLetters[0] && guessesLeft>1) {
                 //decrement guesses left
                 guessesLeft--;
                 //show the new value for guesses left in the div id guesses

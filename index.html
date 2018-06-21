@@ -11,7 +11,7 @@
    <h1>The Psychic Game</h1>
    <br>
    <div id=gameContent>
-        <h2>Guess What Letter I'm Thinking of?!</h2>
+        <h2>Can You Guess What Letter The Computer is Thinking of?!</h2>
         <br>
         <div>Wins: <span id=wins></span> </div>
         <br>
@@ -20,8 +20,17 @@
         <div> Guesses Left: <span id=guesses></span></div>
         <br>
         <div>Your Guess So Far: <span id=playerGuesses></span></div>
+        <br>
+        <p>Click the dark spot on the moon for an awesome brain stimulating soundtrack! ====></p>
     </div>
+    <br>
     <script src="./assets/javascript/game.js"></script>
+    <div id=audioPlayer>
+        <audio controls autoplay>
+        <source src="./assets/images/8bit.mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+        </audio> 
+    </div>
 </body>
 </html>
 
